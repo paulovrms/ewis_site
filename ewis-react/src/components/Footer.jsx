@@ -9,19 +9,19 @@ const Footer = () => {
             </h2>
             <div className="main-footer__social-cont">
               <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/paulovrms/">
-                <img className="main-footer__icon" src="/assets/png/linkedin-ico.png" alt="LinkedIn" />
+                <img className="main-footer__icon" src="assets/png/linkedin-ico.png" alt="LinkedIn" />
               </a>
               <a target="_blank" rel="noreferrer" href="#">
-                <img className="main-footer__icon" src="/assets/png/github-ico.png" alt="GitHub" />
+                <img className="main-footer__icon" src="assets/png/github-ico.png" alt="GitHub" />
               </a>
               <a target="_blank" rel="noreferrer" href="#">
-                <img className="main-footer__icon" src="/assets/png/twitter-ico.png" alt="Twitter" />
+                <img className="main-footer__icon" src="assets/png/twitter-ico.png" alt="Twitter" />
               </a>
               <a target="_blank" rel="noreferrer" href="#">
-                <img className="main-footer__icon" src="/assets/png/yt-ico.png" alt="YouTube" />
+                <img className="main-footer__icon" src="assets/png/yt-ico.png" alt="YouTube" />
               </a>
               <a target="_blank" rel="noreferrer" href="#">
-                <img className="main-footer__icon main-footer__icon--mr-none" src="/assets/png/insta-ico.png" alt="Instagram" />
+                <img className="main-footer__icon main-footer__icon--mr-none" src="assets/png/insta-ico.png" alt="Instagram" />
               </a>
             </div>
           </div>
