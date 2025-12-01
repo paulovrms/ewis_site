@@ -23,7 +23,7 @@ const About = () => {
                 satisfação do cliente.
               </p>
               <p className="about__content-details-para">
-                Com anos de experiência no mercado industrial, nossa equipe está
+                Com vasta experiência no mercado industrial, nossa equipe está
                 preparada para transformar desafios em soluções eficientes.
                 Fale conosco — será um prazer ajudar no seu próximo projeto.
               </p>
@@ -46,6 +46,9 @@ const About = () => {
               <div className="skills__skill">Start-up de Máquinas</div>
               <div className="skills__skill">Supervisório SCADA</div>
               <div className="skills__skill">Indústria 4.0</div>
+              <div className="skills__skill">NR-12</div>
+              <div className="skills__skill">Retrofit</div>
+              <div className="skills__skill">Redes Industriais</div>
             </div>
           </div>
         </div>

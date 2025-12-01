@@ -185,7 +185,7 @@ textarea {
 
 .home-hero {
   color: #fff;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/ewis-react/public/assets/svg/common-bg.svg);
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(../public/assets/svg/common-bg.svg);
   background-position: center;
   height: 100vh;
   min-height: 80rem;
@@ -268,7 +268,8 @@ textarea {
       color: grey;
       max-width: 60rem;
       line-height: 1.7;
-      margin-bottom: 1rem; }
+      margin-bottom: 1rem;
+      text-align: justify; }
       .about__content-details-para--hl {
         font-weight: 700;
         margin: 0 3px; }
@@ -323,7 +324,7 @@ textarea {
           font-size: 1.7rem; } }
 
 .contact {
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/ewis-react/public/assets/svg/common-bg.svg);
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(../public/assets/svg/common-bg.svg);
   background-size: cover;
   background-position: center; }
   .contact__form-container {
@@ -404,7 +405,7 @@ textarea {
 
 .project-cs-hero {
   color: #fff;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/ewis-react/public/assets/svg/common-bg.svg);
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(../public/assets/svg/common-bg.svg);
   background-size: cover;
   background-position: center;
   position: relative; }

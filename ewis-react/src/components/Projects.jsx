@@ -3,17 +3,17 @@ const Projects = () => {
     {
       title: "Automação de Linha de Produção - Indústria Alimentícia",
       img: "assets/jpeg/project-mockup-example.jpeg",
-      link: "./project-1.html"
+      link: ""
     },
     {
       title: "Modernização de Painéis Elétricos - Siderúrgica",
       img: "assets/jpeg/project-mockup-example.jpeg",
-      link: "./project-2.html"
+      link: ""
     },
     {
       title: "Sistema SCADA e Supervisão - Tratamento de Água",
       img: "assets/jpeg/project-mockup-example.jpeg",
-      link: "./project-3.html"
+      link: ""
     }
   ]
 

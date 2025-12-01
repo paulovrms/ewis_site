@@ -12,7 +12,7 @@ const Contact = () => {
 
         <div className="contact__form-container">
           <form
-            action="https://formspree.io/f/seu-id-aqui"
+            action="https://formspree.io/f/mdkrqzyq"
             method="POST"
             className="contact__form"
           >

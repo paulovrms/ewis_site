@@ -1,6 +1,6 @@
 {
   "name": "ewis-react",
-  "homepage": "https://paulovrms.github.io/ewis_site",
+  "homepage": "https://www.ewis.com.br",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^7.9.6"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

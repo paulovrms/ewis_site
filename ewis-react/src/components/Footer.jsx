@@ -1,3 +1,15 @@
+/*
+              <a target="_blank" rel="noreferrer" href="#">
+                <img className="main-footer__icon" src="assets/png/github-ico.png" alt="GitHub" />
+              </a>
+              <a target="_blank" rel="noreferrer" href="#">
+                <img className="main-footer__icon" src="assets/png/twitter-ico.png" alt="Twitter" />
+              </a>
+              <a target="_blank" rel="noreferrer" href="#">
+                <img className="main-footer__icon" src="assets/png/yt-ico.png" alt="YouTube" />
+              </a>
+*/
+
 const Footer = () => {
   return (
     <footer className="main-footer">
@@ -11,16 +23,7 @@ const Footer = () => {
               <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/paulovrms/">
                 <img className="main-footer__icon" src="assets/png/linkedin-ico.png" alt="LinkedIn" />
               </a>
-              <a target="_blank" rel="noreferrer" href="#">
-                <img className="main-footer__icon" src="assets/png/github-ico.png" alt="GitHub" />
-              </a>
-              <a target="_blank" rel="noreferrer" href="#">
-                <img className="main-footer__icon" src="assets/png/twitter-ico.png" alt="Twitter" />
-              </a>
-              <a target="_blank" rel="noreferrer" href="#">
-                <img className="main-footer__icon" src="assets/png/yt-ico.png" alt="YouTube" />
-              </a>
-              <a target="_blank" rel="noreferrer" href="#">
+              <a target="_blank" rel="noreferrer" href="https://www.instagram.com/engenheiro.ramos/">
                 <img className="main-footer__icon main-footer__icon--mr-none" src="assets/png/insta-ico.png" alt="Instagram" />
               </a>
             </div>
