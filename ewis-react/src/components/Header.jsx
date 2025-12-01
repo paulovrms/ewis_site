@@ -1,3 +1,6 @@
+import { useState } from 'react' // Se não tiver, adicione se necessário
+import { HashLink } from 'react-router-hash-link' // Novo import
+
 const Header = ({ isOpen, toggleMenu, closeMenu }) => {
   return (
     <header className="header">
@@ -5,7 +8,7 @@ const Header = ({ isOpen, toggleMenu, closeMenu }) => {
         <div className="header__logo-container" onClick={() => window.location.href = '/'}>
           <div className="header__logo-img-cont">
             <img
-              src="assets/png/ewis.png"
+              src="/assets/png/ewis.png" // Path absoluto
               alt="Logo EWIS"
               className="header__logo-img"
             />
@@ -15,20 +18,28 @@ const Header = ({ isOpen, toggleMenu, closeMenu }) => {
 
         <div className="header__main">
           <ul className="header__links">
-            <li className="header__link-wrapper"><a href="" className="header__link"> Início </a></li>
-            <li className="header__link-wrapper"><a href="#about" className="header__link">Sobre</a></li>
-            <li className="header__link-wrapper"><a href="#projects" className="header__link">Projetos</a></li>
-            <li className="header__link-wrapper"><a href="#contact" className="header__link">Contato</a></li>
+            <li className="header__link-wrapper">
+              <HashLink to="/" className="header__link"> Início </HashLink>
+            </li>
+            <li className="header__link-wrapper">
+              <HashLink smooth to="/#about" className="header__link">Sobre</HashLink>
+            </li>
+            <li className="header__link-wrapper">
+              <HashLink smooth to="/#projects" className="header__link">Projetos</HashLink>
+            </li>
+            <li className="header__link-wrapper">
+              <HashLink smooth to="/#contact" className="header__link">Contato</HashLink>
+            </li>
           </ul>
 
           <div className="header__main-ham-menu-cont" onClick={toggleMenu}>
             <img
-              src="assets/svg/ham-menu.svg"
+              src="/assets/svg/ham-menu.svg" // Path absoluto
               alt="menu hambúrguer"
               className={`header__main-ham-menu ${isOpen ? 'd-none' : ''}`}
             />
             <img
-              src="assets/svg/ham-menu-close.svg"
+              src="/assets/svg/ham-menu-close.svg" // Path absoluto
               alt="fechar menu"
               className={`header__main-ham-menu-close ${isOpen ? '' : 'd-none'}`}
             />
@@ -39,10 +50,18 @@ const Header = ({ isOpen, toggleMenu, closeMenu }) => {
       <div className={`header__sm-menu ${isOpen ? 'header__sm-menu--active' : ''}`}>
         <div className="header__sm-menu-content">
           <ul className="header__sm-menu-links">
-            <li className="header__sm-menu-link"><a href="/" onClick={closeMenu}> Início </a></li>
-            <li className="header__sm-menu-link"><a href="/#about" onClick={closeMenu}> Sobre </a></li>
-            <li className="header__sm-menu-link"><a href="/#projects" onClick={closeMenu}> Projetos </a></li>
-            <li className="header__sm-menu-link"><a href="/#contact" onClick={closeMenu}> Contato </a></li>
+            <li className="header__sm-menu-link">
+              <HashLink to="/" onClick={closeMenu}> Início </HashLink>
+            </li>
+            <li className="header__sm-menu-link">
+              <HashLink smooth to="/#about" onClick={closeMenu}> Sobre </HashLink>
+            </li>
+            <li className="header__sm-menu-link">
+              <HashLink smooth to="/#projects" onClick={closeMenu}> Projetos </HashLink>
+            </li>
+            <li className="header__sm-menu-link">
+              <HashLink smooth to="/#contact" onClick={closeMenu}> Contato </HashLink>
+            </li>
           </ul>
         </div>
       </div>

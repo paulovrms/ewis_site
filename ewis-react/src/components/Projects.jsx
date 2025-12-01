@@ -1,20 +1,22 @@
+import { Link } from 'react-router-dom'
+
 const Projects = () => {
   const projects = [
     {
-      title: "Automação de Linha de Produção - Indústria Alimentícia",
-      img: "assets/jpeg/project-mockup-example.jpeg",
-      link: ""
+      id: 1,
+      title: 'Automação de Linha de Produção - Indústria de Fertilizantes',
+      img: '/assets/jpeg/project-mockup-example.jpeg',
     },
     {
-      title: "Modernização de Painéis Elétricos - Siderúrgica",
-      img: "assets/jpeg/project-mockup-example.jpeg",
-      link: ""
+      id: 2,
+      title: 'Modernização de Painéis Elétricos - Siderúrgica',
+      img: '/assets/jpeg/project-mockup-example.jpeg',
     },
     {
-      title: "Sistema SCADA e Supervisão - Tratamento de Água",
-      img: "assets/jpeg/project-mockup-example.jpeg",
-      link: ""
-    }
+      id: 3,
+      title: 'Sistema SCADA e Supervisão - Tratamento de Água',
+      img: '/assets/jpeg/project-mockup-example.jpeg',
+    },
   ]
 
   return (
@@ -28,15 +30,10 @@ const Projects = () => {
         </h2>
 
         <div className="projects__content">
-          {projects.map((proj, index) => (
-            <div className="projects__row" key={index}>
+          {projects.map((proj) => (
+            <div className="projects__row" key={proj.id}>
               <div className="projects__row-img-cont">
-                <img
-                  src={proj.img}
-                  alt={proj.title}
-                  className="projects__row-img"
-                  loading="lazy"
-                />
+                <img src={proj.img} alt={proj.title} className="projects__row-img" loading="lazy" />
               </div>
               <div className="projects__row-content">
                 <h3 className="projects__row-content-title">{proj.title}</h3>
@@ -44,14 +41,9 @@ const Projects = () => {
                   Projeto completo de automação e integração, entregue dentro do prazo
                   e com total aprovação do cliente.
                 </p>
-                <a
-                  href={proj.link}
-                  className="btn btn--med btn--theme dynamicBgClr"
-                  target="_blank"
-                  rel="noreferrer"
-                >
+                <Link to={`/projects/${proj.id}`} className="btn btn--med btn--theme dynamicBgClr">
                   Ver Case
-                </a>
+                </Link>
               </div>
             </div>
           ))}

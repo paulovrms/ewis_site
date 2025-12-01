@@ -35,12 +35,12 @@ const Hero = () => {
       <div className="home-hero__socials">
         <div className="home-hero__social">
           <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/paulovrms/" className="home-hero__social-icon-link">
-            <img src="assets/png/linkedin-ico.png" alt="LinkedIn" className="home-hero__social-icon" />
+            <img src="/assets/png/linkedin-ico.png" alt="LinkedIn" className="home-hero__social-icon" />
           </a>
         </div>        
         <div className="home-hero__social">
           <a target="_blank" rel="noreferrer" href="https://www.instagram.com/engenheiro.ramos/" className="home-hero__social-icon-link home-hero__social-icon-link--bd-none">
-            <img src="assets/png/insta-ico.png" alt="Instagram" className="home-hero__social-icon" />
+            <img src="/assets/png/insta-ico.png" alt="Instagram" className="home-hero__social-icon" />
           </a>
         </div>
       </div>

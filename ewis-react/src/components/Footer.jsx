@@ -21,10 +21,10 @@ const Footer = () => {
             </h2>
             <div className="main-footer__social-cont">
               <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/paulovrms/">
-                <img className="main-footer__icon" src="assets/png/linkedin-ico.png" alt="LinkedIn" />
+                <img className="main-footer__icon" src="/assets/png/linkedin-ico.png" alt="LinkedIn" />
               </a>
               <a target="_blank" rel="noreferrer" href="https://www.instagram.com/engenheiro.ramos/">
-                <img className="main-footer__icon main-footer__icon--mr-none" src="assets/png/insta-ico.png" alt="Instagram" />
+                <img className="main-footer__icon main-footer__icon--mr-none" src="/assets/png/insta-ico.png" alt="Instagram" />
               </a>
             </div>
           </div>
