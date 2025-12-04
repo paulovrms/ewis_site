@@ -4,17 +4,17 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: 'Automação de Linha de Produção - Indústria de Fertilizantes',
+      title: 'Automação de Linha de Produção - Projeto Internacional',
       img: '/assets/jpeg/project-mockup-example.jpeg',
     },
     {
       id: 2,
-      title: 'Modernização de Painéis Elétricos - Siderúrgica',
+      title: 'Automação de maquinario industrial',
       img: '/assets/jpeg/project-mockup-example.jpeg',
     },
     {
       id: 3,
-      title: 'Sistema SCADA e Supervisão - Tratamento de Água',
+      title: 'Painéis elétricos industriais',
       img: '/assets/jpeg/project-mockup-example.jpeg',
     },
   ]

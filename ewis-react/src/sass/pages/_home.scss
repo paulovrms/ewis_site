@@ -1,3 +1,7 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+
 .home-hero {
   color: #fff;
   background: linear-gradient(
@@ -193,7 +197,7 @@
       rgba($themeClrPrimary, 0.8),
       rgba($themeClrPrimary, 0.8)
     ),
-    url(../public/assets/svg/common-bg.svg);
+    url(/assets/svg/common-bg.svg);
   background-size: cover;
   background-position: center;
 

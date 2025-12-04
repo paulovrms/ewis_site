@@ -9,26 +9,26 @@ const ProjectDetail = () => {
   const { id } = useParams()
   const projects = {
     1: {
-      title: 'Automação de Linha de Produção - Indústria Alimentícia',
-      description: 'Projeto completo de automação e integração, entregue dentro do prazo e com total aprovação do cliente.',
+      title: 'Automação de Linha de Produção - Projeto Internacional',
+      description: 'Programação de CLP, desenvolvimento de sistema SCADA e projeto de painéis elétricos para linha de fertilizantes no Paquistão, serviço B2B prestado a empresa parceira.',
       img: '/assets/jpeg/project-mockup-example.jpeg',
-      skills: ['Automação Industrial', 'CLPs e IHMs', 'Integração de Sistemas'],
+      skills: ['Automação Industrial', 'Allen Bradley', 'Rockwell Automation', 'Alfa Instrumentos', 'Adisra SCADA', 'PostgreSQL'],
       liveLink: '#', // Substitua por link real
       codeLink: '#', // Substitua por link real
     },
     2: {
-      title: 'Modernização de Painéis Elétricos - Siderúrgica',
-      description: 'Modernização completa de painéis, melhorando eficiência e segurança.',
+      title: 'Automação de maquinario industrial',
+      description: 'Projeto completo de painéis elétricos, desenvolvimento de automação com CLP + IHM WEG e integração com rede modbus para um sistema de peneiramento industrial, serivço B2B prestado a empresa parceira.',
       img: '/assets/jpeg/project-mockup-example.jpeg',
-      skills: ['Painéis Elétricos', 'Projetos Elétricos', 'NR-12'],
+      skills: ['Painéis Elétricos', 'WEG', 'Weintek','NR-12', 'ISA-101'],
       liveLink: '#',
       codeLink: '#',
     },
     3: {
-      title: 'Sistema SCADA e Supervisão - Tratamento de Água',
-      description: 'Implementação de sistema SCADA para monitoramento remoto.',
+      title: 'Painéis elétricos industriais',
+      description: 'Cuidado em cada detalhe no projeto e montagem de painéis elétricos industriais, seguindo normas NR-10 e NR-12, para garantir segurança e eficiência em instalações industriais.',
       img: '/assets/jpeg/project-mockup-example.jpeg',
-      skills: ['Supervisório SCADA', 'Indústria 4.0', 'Redes Industriais'],
+      skills: ['NBR-61439', 'NBR-5410', 'CCM', 'QGBT', 'NR-10', 'NR-12'],
       liveLink: '#',
       codeLink: '#',
     },

@@ -45,10 +45,10 @@ const About = () => {
               <div className="skills__skill">Consultoria Técnica</div>
               <div className="skills__skill">Start-up de Máquinas</div>
               <div className="skills__skill">Supervisório SCADA</div>
+              <div className="skills__skill">Redes Industriais</div>
               <div className="skills__skill">Indústria 4.0</div>
               <div className="skills__skill">NR-12</div>
               <div className="skills__skill">Retrofit</div>
-              <div className="skills__skill">Redes Industriais</div>
             </div>
           </div>
         </div>
