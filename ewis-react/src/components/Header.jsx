@@ -19,7 +19,7 @@ const Header = ({ isOpen, toggleMenu, closeMenu }) => {
         <div className="header__main">
           <ul className="header__links">
             <li className="header__link-wrapper">
-              <HashLink to="/" className="header__link"> Início </HashLink>
+              <Link to="/" className="header__link"> Início </Link>
             </li>
             <li className="header__link-wrapper">
               <HashLink smooth to="/#about" className="header__link">Sobre</HashLink>
