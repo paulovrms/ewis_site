@@ -13,24 +13,18 @@ const ProjectDetail = () => {
       description: 'Programação de CLP, desenvolvimento de sistema SCADA e projeto de painéis elétricos para linha de fertilizantes no Paquistão, serviço B2B prestado a empresa parceira.',
       img: '/assets/jpeg/project-mockup-example.jpeg',
       skills: ['Automação Industrial', 'Allen Bradley', 'Rockwell Automation', 'Alfa Instrumentos', 'Adisra SCADA', 'PostgreSQL'],
-      liveLink: '#', // Substitua por link real
-      codeLink: '#', // Substitua por link real
     },
     2: {
       title: 'Automação de maquinario industrial',
       description: 'Projeto completo de painéis elétricos, desenvolvimento de automação com CLP + IHM WEG e integração com rede modbus para um sistema de peneiramento industrial, serivço B2B prestado a empresa parceira.',
       img: '/assets/jpeg/project-mockup-example.jpeg',
       skills: ['Painéis Elétricos', 'WEG', 'Weintek','NR-12', 'ISA-101'],
-      liveLink: '#',
-      codeLink: '#',
     },
     3: {
       title: 'Painéis elétricos industriais',
       description: 'Cuidado em cada detalhe no projeto e montagem de painéis elétricos industriais, seguindo normas NR-10 e NR-12, para garantir segurança e eficiência em instalações industriais.',
       img: '/assets/jpeg/project-mockup-example.jpeg',
       skills: ['NBR-61439', 'NBR-5410', 'CCM', 'QGBT', 'NR-10', 'NR-12'],
-      liveLink: '#',
-      codeLink: '#',
     },
   }
 

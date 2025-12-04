@@ -16,7 +16,6 @@
         </div>
 */
 
-
 import { HashLink } from 'react-router-hash-link'
 
 const Hero = () => {
