@@ -28,7 +28,7 @@ const Hero = () => {
           </p>
         </div>
         <div className="home-hero__cta">
-          <a href="/#projects" className="btn btn--bg">Projetos</a>
+          <HashLink smooth to="/#projects" className="btn btn--bg">Projetos</HashLink>
         </div>
       </div>
 
