@@ -1,5 +1,6 @@
 import { useState } from 'react' // Se não tiver, adicione se necessário
 import { HashLink } from 'react-router-hash-link' // Novo import
+import { Link } from 'react-router-dom'
 
 const Header = ({ isOpen, toggleMenu, closeMenu }) => {
   return (
