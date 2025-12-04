@@ -3,6 +3,11 @@ import { HashLink } from 'react-router-hash-link'
 import { Link } from 'react-router-dom'
 
 const Header = ({ isOpen, toggleMenu, closeMenu }) => {
+  const scrollToTop = () => {
+    window.scrollTo(0, 0)
+    closeMenu()
+  }
+
   return (
     <header className="header">
       <div className="header__content">
@@ -20,7 +25,7 @@ const Header = ({ isOpen, toggleMenu, closeMenu }) => {
         <div className="header__main">
           <ul className="header__links">
             <li className="header__link-wrapper">
-              <Link to="/" className="header__link"> Início </Link>
+              <Link to="/" className="header__link" onClick={scrollToTop}> Início </Link>
             </li>
             <li className="header__link-wrapper">
               <HashLink smooth to="/#about" className="header__link">Sobre</HashLink>
@@ -52,7 +57,7 @@ const Header = ({ isOpen, toggleMenu, closeMenu }) => {
         <div className="header__sm-menu-content">
           <ul className="header__sm-menu-links">
             <li className="header__sm-menu-link">
-              <Link to="/" onClick={closeMenu}> Início </Link>
+              <Link to="/" onClick={scrollToTop}> Início </Link>
             </li>
             <li className="header__sm-menu-link">
               <HashLink smooth to="/#about" onClick={closeMenu}> Sobre </HashLink>
