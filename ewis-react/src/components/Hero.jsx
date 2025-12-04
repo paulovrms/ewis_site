@@ -16,6 +16,9 @@
         </div>
 */
 
+
+import { HashLink } from 'react-router-hash-link'
+
 const Hero = () => {
   return (
     <section className="home-hero">
