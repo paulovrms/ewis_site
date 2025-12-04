@@ -1,5 +1,5 @@
-import { useState } from 'react' // Se não tiver, adicione se necessário
-import { HashLink } from 'react-router-hash-link' // Novo import
+import { useState } from 'react'
+import { HashLink } from 'react-router-hash-link'
 import { Link } from 'react-router-dom'
 
 const Header = ({ isOpen, toggleMenu, closeMenu }) => {
@@ -9,7 +9,7 @@ const Header = ({ isOpen, toggleMenu, closeMenu }) => {
         <div className="header__logo-container" onClick={() => window.location.href = '/'}>
           <div className="header__logo-img-cont">
             <img
-              src="/assets/png/ewis.png" // Path absoluto
+              src="/assets/png/ewis.png"
               alt="Logo EWIS"
               className="header__logo-img"
             />
@@ -35,12 +35,12 @@ const Header = ({ isOpen, toggleMenu, closeMenu }) => {
 
           <div className="header__main-ham-menu-cont" onClick={toggleMenu}>
             <img
-              src="/assets/svg/ham-menu.svg" // Path absoluto
+              src="/assets/svg/ham-menu.svg"
               alt="menu hambúrguer"
               className={`header__main-ham-menu ${isOpen ? 'd-none' : ''}`}
             />
             <img
-              src="/assets/svg/ham-menu-close.svg" // Path absoluto
+              src="/assets/svg/ham-menu-close.svg"
               alt="fechar menu"
               className={`header__main-ham-menu-close ${isOpen ? '' : 'd-none'}`}
             />
@@ -52,7 +52,7 @@ const Header = ({ isOpen, toggleMenu, closeMenu }) => {
         <div className="header__sm-menu-content">
           <ul className="header__sm-menu-links">
             <li className="header__sm-menu-link">
-              <HashLink to="/" onClick={closeMenu}> Início </HashLink>
+              <Link to="/" onClick={closeMenu}> Início </Link>
             </li>
             <li className="header__sm-menu-link">
               <HashLink smooth to="/#about" onClick={closeMenu}> Sobre </HashLink>
