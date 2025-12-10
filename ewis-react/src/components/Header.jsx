@@ -11,7 +11,7 @@ const Header = ({ isOpen, toggleMenu, closeMenu }) => {
   return (
     <header className="header">
       <div className="header__content">
-        <div className="header__logo-container" onClick={() => window.location.href = '/'}>
+        <Link to="/" className="header__logo-container" onClick={scrollToTop}>
           <div className="header__logo-img-cont">
             <img
               src="/assets/png/ewis.png"
@@ -20,7 +20,7 @@ const Header = ({ isOpen, toggleMenu, closeMenu }) => {
             />
           </div>
           <span className="header__logo-sub">Soluções Industriais</span>
-        </div>
+        </Link>
 
         <div className="header__main">
           <ul className="header__links">
@@ -28,13 +28,13 @@ const Header = ({ isOpen, toggleMenu, closeMenu }) => {
               <Link to="/" className="header__link" onClick={scrollToTop}> Início </Link>
             </li>
             <li className="header__link-wrapper">
-              <HashLink smooth to="/#about" className="header__link">Sobre</HashLink>
+              <HashLink smooth to="/#about" className="header__link" onClick={closeMenu}>Sobre</HashLink>
             </li>
             <li className="header__link-wrapper">
-              <HashLink smooth to="/#projects" className="header__link">Projetos</HashLink>
+              <HashLink smooth to="/#projects" className="header__link" onClick={closeMenu}>Projetos</HashLink>
             </li>
             <li className="header__link-wrapper">
-              <HashLink smooth to="/#contact" className="header__link">Contato</HashLink>
+              <HashLink smooth to="/#contact" className="header__link" onClick={closeMenu}>Contato</HashLink>
             </li>
           </ul>
 

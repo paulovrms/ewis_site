@@ -28,7 +28,7 @@ const About = () => {
                 Fale conosco — será um prazer ajudar no seu próximo projeto.
               </p>
             </div>
-            <a href="/#contact" className="btn btn--med btn--theme dynamicBgClr">
+            <a href="#contact" className="btn btn--med btn--theme dynamicBgClr">
               Entre em contato
             </a>
           </div>

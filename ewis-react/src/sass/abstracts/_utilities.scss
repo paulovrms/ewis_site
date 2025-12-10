@@ -119,6 +119,12 @@
   &--theme {
     background: $themeClrPrimary;
     color: #fff;
+    &:hover {
+      /* keep theme background and text color on hover (no inversion) */
+      background: $themeClrPrimary;
+      color: #fff;
+      transform: translateY(-3px);
+    }
   }
   &--theme-inv {
     color: $themeClrPrimary;
