@@ -16,6 +16,9 @@
 @supports(height:100svh){:root{--screen-height:100svh}}
 .first-screen,.last-screen{display:flex;flex-direction:column}
 .bar{position:sticky;top:0;z-index:2;background:var(--bg)}
+.header-logo{display:grid;width:124px;padding:6px 8px}
+.header .header-logo img{grid-area:1/1;width:100%;padding:0;background:none;border-radius:0;clip-path:inset(0 78.54251% 0 0)}
+.header .header-logo .header-logo-light{filter:brightness(0) invert(1) brightness(.96);clip-path:inset(0 0 0 21.45749%)}
 .first-screen,#piloto,#fabricas,.last-screen{min-height:calc(var(--screen-height) - var(--header-height))}
 .first-screen .hero{flex:1;align-content:center;padding-block:clamp(28px,5vh,60px)}
 #piloto,#fabricas{display:grid;align-content:center;padding-block:clamp(38px,7vh,90px)}
@@ -45,7 +48,7 @@ dialog{overscroll-behavior:contain}
 </style></head>
 <body>
 <a class="skip" href="#conteudo">Ir ao conteúdo</a>
-<header class="bar"><div class="shell header"><a class="brand" href="#conteudo" aria-label="EWIS, início"><img src="./assets/png/ewis.png" width="247" height="73" alt="Logo EWIS"></a><nav aria-label="Navegação principal"><a href="#demo">Demonstração</a><a href="#piloto">Como trabalhamos</a><a href="#fabricas">Indústria</a></nav><a class="button ghost" href="#contato">Falar do meu projeto</a></div></header>
+<header class="bar"><div class="shell header"><a class="brand" href="#conteudo" aria-label="EWIS, início"><span class="header-logo"><img src="./assets/png/ewis.png" width="247" height="73" alt="Logo EWIS"><img class="header-logo-light" src="./assets/png/ewis.png" width="247" height="73" alt="" aria-hidden="true"></span></a><nav aria-label="Navegação principal"><a href="#demo">Demonstração</a><a href="#piloto">Como trabalhamos</a><a href="#fabricas">Indústria</a></nav><a class="button ghost" href="#contato">Falar do meu projeto</a></div></header>
 <main id="conteudo">
 <div class="first-screen">
 <section class="shell hero" aria-labelledby="hero-title">
