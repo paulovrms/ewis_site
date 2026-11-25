@@ -23,7 +23,7 @@
 @media (701px <= width <= 850px){.header nav{gap:14px;font-size:.86rem}.header{gap:12px}}
 .last-screen .contact{flex:1;align-content:center;padding-block:clamp(38px,7vh,90px)}
 @media(max-width:700px){:root{--header-height:65px}.first-screen .hero{padding-block:34px}.last-screen .contact{align-items:start}}
-/* Snap between sections without trapping scroll inside a taller section. */
+/* Snap below the sticky header without trapping scroll inside taller sections. */
 html{scroll-snap-type:y mandatory;scroll-padding-top:var(--header-height)}
 .first-screen,#piloto,#fabricas,.last-screen{scroll-snap-align:start}
 dialog{overscroll-behavior:contain}
