@@ -21,6 +21,13 @@
 .last-screen{min-height:var(--screen-height)}
 .last-screen .contact{flex:1;align-content:center;padding-block:clamp(38px,7vh,90px)}
 @media(max-width:700px){:root{--header-height:65px}.first-screen .hero{padding-block:34px}.last-screen .contact{align-items:start}}
+/* Snap between sections without trapping scroll inside a taller section. */
+html{scroll-snap-type:y mandatory}
+.first-screen,#piloto,.last-screen{scroll-snap-align:start}
+.first-screen{scroll-margin-top:var(--header-height)}
+dialog{overscroll-behavior:contain}
+@supports(height:100dvh){:root{--screen-height:100dvh}}
+/* The demo is an in-section destination, not a fourth snap panel. */
 </style></head>
 <body>
 <a class="skip" href="#conteudo">Ir ao conteúdo</a>
@@ -91,7 +98,7 @@ const demo=$('demo'), autoButton=$('auto-toggle');
 let rotate=!reduced.matches, visible=!('IntersectionObserver' in window), autoTimer;
 function setRotation(on){
   rotate=on;
-  autoButton.textContent=rotate?'Pausar troca automática':'Ativar troca automática';
+  autoButton.hidden=!rotate;
   planRotation();
 }
 function planRotation(){
@@ -113,10 +120,9 @@ if('IntersectionObserver' in window){
 }
 document.addEventListener('visibilitychange',planRotation);
 reduced.addEventListener('change',e=>{if(e.matches)setRotation(false)});
-autoButton.hidden=false;
 setRotation(rotate);
-autoButton.addEventListener('click',()=>setRotation(!rotate));
-for(const id of ['leitura'])$(id).addEventListener('focusin',()=>setRotation(false));
+autoButton.addEventListener('click',()=>{setRotation(false);tabs.find(t=>t.dataset.view===view)?.focus({preventScroll:true})});
+$('leitura').addEventListener('focusin',()=>setRotation(false));
 for(const tab of tabs)tab.addEventListener('focus',()=>setRotation(false));
 function render(){const state=fault?'fault':'normal';$('demo').classList.toggle('fault',fault);$('drawing').dataset.view=view;const label=fault?'Parado por alarme':'Em operação';if($('status').textContent!==label)$('status').textContent=label;$('stop').disabled=fault;$('reset').disabled=!fault;const [title,body]=states[state][view];$('read-title').textContent=title;$('read-body').textContent=body;$('leitura').setAttribute('aria-labelledby','tab-'+view);tabs.forEach(t=>{const active=t.dataset.view===view;t.setAttribute('aria-selected',String(active));t.tabIndex=active?0:-1})}
 tabs.forEach((tab,i)=>{tab.addEventListener('click',()=>{setRotation(false);view=tab.dataset.view;render()});tab.addEventListener('keydown',e=>{let n;if(e.key==='ArrowRight')n=(i+1)%3;else if(e.key==='ArrowLeft')n=(i+2)%3;else if(e.key==='Home')n=0;else if(e.key==='End')n=2;else return;e.preventDefault();tabs[n].click();tabs[n].focus()})});
