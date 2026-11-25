@@ -10,11 +10,23 @@
 @media(max-width:950px){.shell{width:calc(100% - 50px)}.hero{gap:28px}h1{font-size:clamp(2.85rem,6.7vw,4.7rem)}}
 @media(max-width:700px){.shell{width:calc(100% - 32px)}.header{min-height:64px}.header nav{display:none}.hero{grid-template-columns:1fr;padding-block:38px 34px;gap:25px}.lead .eyebrow{margin-bottom:14px}.lead p{margin-block:15px 19px}.lead h1{font-size:clamp(2.62rem,9vw,3.8rem)}.hero .buttons .button{padding-inline:12px;font-size:.91rem}.demo-top{padding-inline:12px}.demo-top .meta{font-size:.71rem}.steps{grid-template-columns:1fr;gap:19px;margin-top:25px}.example,.contact{grid-template-columns:1fr;gap:18px}.example{margin-top:29px}.strip .shell{--strip-gap:clamp(6px,2vw,10px);font-size:.78rem;line-height:1.35}.strip span{overflow-wrap:anywhere}.foot{font-size:.78rem}.foot .brand{flex:none}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+/* Each content block fills the viewport; intrinsic content can extend it. */
+:root{--header-height:77px;--screen-height:100vh}
+@supports(height:100svh){:root{--screen-height:100svh}}
+.first-screen,.last-screen{display:flex;flex-direction:column}
+.first-screen{min-height:calc(var(--screen-height) - var(--header-height))}
+.first-screen .hero{flex:1;align-content:center;padding-block:clamp(28px,5vh,60px)}
+#piloto{display:grid;align-content:center;min-height:var(--screen-height);padding-block:clamp(38px,7vh,90px)}
+.last-screen{min-height:var(--screen-height)}
+.last-screen .contact{flex:1;align-content:center;padding-block:clamp(38px,7vh,90px)}
+@media(max-width:700px){:root{--header-height:65px}.first-screen .hero{padding-block:34px}.last-screen .contact{align-items:start}}
 </style></head>
 <body>
 <a class="skip" href="#conteudo">Ir ao conteúdo</a>
 <header class="bar"><div class="shell header"><a class="brand" href="#conteudo" aria-label="EWIS, início"><img src="./assets/png/ewis.png" width="247" height="73" alt="Logo EWIS"></a><nav aria-label="Navegação principal"><a href="#demo">Demonstração</a><a href="#piloto">Projeto piloto</a></nav><a class="button ghost" href="#contato">Falar do meu projeto</a></div></header>
 <main id="conteudo">
+<div class="first-screen">
 <section class="shell hero" aria-labelledby="hero-title">
 <div class="lead"><div class="eyebrow">Para fabricantes de máquinas</div><h1 id="hero-title">Elétrica e automação <strong>para sua máquina.</strong></h1><p>Projeto elétrico, painéis, CLP e IHM. Da primeira unidade a um padrão que sua equipe consegue repetir.</p><div class="buttons"><a class="button primary" href="#demo">Testar demonstração</a><a class="button ghost" href="#piloto">Conhecer o piloto</a></div></div>
 <section id="demo" class="demo" aria-label="Demonstração de um dosador">
@@ -43,6 +55,7 @@
 </section>
 </section>
 <div class="strip"><div class="shell"><span>Projeto e painéis</span><span>Programação CLP / IHM</span><span>Testes e comissionamento</span></div></div>
+</div>
 <section id="piloto" class="paper"><div class="shell">
 <div class="section-title"><div class="eyebrow">Projeto piloto</div><h2>Comece por um modelo. Repita com um padrão.</h2><p>Escolha a máquina que mais se repete ou que mais dá retrabalho. Validamos a primeira unidade e deixamos uma base documentada para as próximas.</p></div>
 <div class="steps">
@@ -52,8 +65,11 @@
 </div>
 <div class="example"><div><h3>O que pode sair do piloto</h3><p>Exemplo de entregáveis para um dosador industrial.</p></div><ul class="checks"><li>Diagrama e lista de materiais</li><li>Arquivos de CLP e IHM e lista de alarmes</li><li>Checklist de teste e partida</li></ul></div>
 </div></section>
-<section id="contato" class="shell contact"><div><div class="eyebrow">Conversa técnica</div><h2>Qual máquina mais dá retrabalho?</h2><p>Montagem, partida ou pós-venda? Conte onde pega.</p></div><div class="formstub"><div class="meta">Sobre a sua máquina</div><p>Informe o equipamento e o principal problema para conversar com a EWIS.</p><button class="button primary" id="open-brief" type="button">Enviar mensagem</button></div></section>
-</main><footer class="shell foot"><a class="brand" href="#conteudo" aria-label="EWIS, início"><img src="./assets/png/ewis.png" width="247" height="73" alt="Logo EWIS"></a><span>Elétrica e automação industrial</span><span>Mockup para avaliação</span></footer>
+<div id="contato" class="last-screen">
+<section class="shell contact" aria-labelledby="contato-titulo"><div><div class="eyebrow">Conversa técnica</div><h2 id="contato-titulo">Qual máquina mais dá retrabalho?</h2><p>Montagem, partida ou pós-venda? Conte onde pega.</p></div><div class="formstub"><div class="meta">Sobre a sua máquina</div><p>Informe o equipamento e o principal problema para conversar com a EWIS.</p><button class="button primary" id="open-brief" type="button">Enviar mensagem</button></div></section>
+<footer class="shell foot" role="contentinfo"><a class="brand" href="#conteudo" aria-label="EWIS, início"><img src="./assets/png/ewis.png" width="247" height="73" alt="Logo EWIS"></a><span>Elétrica e automação industrial</span><span>Mockup para avaliação</span></footer>
+</div>
+</main>
 <dialog id="brief-dialog" aria-labelledby="brief-title"><div class="dialogtop"><h3 id="brief-title">Contato</h3><button type="button" id="close-brief">Fechar</button></div>
 <form class="brief" action="https://formspree.io/f/mdkrqzyq" method="POST">
 <label for="name">Nome<input required type="text" name="name" id="name" placeholder="Seu nome"></label>
