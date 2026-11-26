@@ -70,6 +70,12 @@ dialog{overscroll-behavior:contain}
 .demo-actions{grid-template-columns:repeat(2,minmax(0,1fr))}
 #stop,#reset{grid-area:1/1;justify-self:stretch}
 #refill{grid-area:1/2}
+#demo[data-phase=low] #refill:not(:disabled){border-color:#b6915e}
+@media(prefers-reduced-motion:no-preference){
+  #demo[data-phase=low] #refill:not(:disabled){animation:refill-hint 2.3s ease-in-out 2}
+}
+@keyframes refill-hint{50%{border-color:#e1ba80;box-shadow:0 0 0 2px rgb(225 186 128 / .12)}}
+
 .demo.fault #stop{visibility:hidden}
 .demo-actions .ghost:disabled{color:var(--dim);opacity:.56;cursor:default;background:none}
 @media(max-width:480px){.demo-actions{padding-inline:12px}.demo-actions .button{padding:7px 5px;font-size:.78rem}.machine-line{padding-inline:6px;font-size:.67rem}}
