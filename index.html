@@ -25,7 +25,7 @@
 .first-screen,#piloto,#fabricas,.last-screen{min-height:calc(var(--screen-height) - var(--header-height))}
 .first-screen .hero{flex:1;align-content:center;padding-block:clamp(28px,5vh,60px)}
 #piloto,#fabricas{display:grid;align-content:center;padding-block:clamp(38px,7vh,90px)}
-#fabricas{background:#e5e0d9}.factory-next{margin-top:24px}.factory-next .button{border-color:#414146;color:var(--ink)}.factory-next .button:hover{background:#d5cfc7}
+#fabricas{background:#e5e0d9}#fabricas .steps{column-gap:clamp(16px,2.2vw,26px);row-gap:16px}#fabricas .step{border-top:0;padding:clamp(16px,2.2vw,24px);border-left:3px solid var(--red);background:#f1ede7}#fabricas .step h3{margin:0 0 7px}#fabricas .step p{margin:0;color:#505156}.factory-next{margin-top:24px}.factory-next .button{border-color:#414146;color:var(--ink)}.factory-next .button:hover{background:#d5cfc7}
 @media (701px <= width <= 850px){.header nav{gap:14px;font-size:.86rem}.header{gap:12px}}
 .last-screen .contact{flex:1;align-content:center;padding-block:clamp(38px,7vh,90px)}
 @media(max-width:700px){:root{--header-height:65px}.first-screen .hero{padding-block:34px}.last-screen .contact{align-items:start}}
