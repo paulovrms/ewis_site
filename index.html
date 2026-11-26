@@ -72,7 +72,7 @@ dialog{overscroll-behavior:contain}
 #refill{grid-area:1/2}
 #demo[data-phase=low] #refill:not(:disabled){border-color:#b6915e}
 @media(prefers-reduced-motion:no-preference){
-  #demo[data-phase=low] #refill:not(:disabled){animation:refill-hint 2.3s ease-in-out 2}
+  #demo[data-phase=low] #refill:not(:disabled){animation:refill-hint 1.8s ease-in-out infinite}
 }
 @keyframes refill-hint{50%{border-color:#e1ba80;box-shadow:0 0 0 2px rgb(225 186 128 / .12)}}
 
