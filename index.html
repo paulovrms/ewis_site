@@ -133,8 +133,8 @@ else window.addEventListener('resize',syncBarHeight);
 const $=(id)=>document.getElementById(id);
 const tabs=[...document.querySelectorAll('.tabs button')];
 const states={
-normal:{painel:['Dosador alimentado','A proteção e o acionamento do motor ficam no painel.'],clp:['Sequência liberada','O sensor confirma a descarga livre e o CLP mantém a rosca em marcha.'],ihm:['Dosagem em andamento','A tela do operador mostra a etapa ativa e o estado da descarga.']},
-fault:{painel:['Acionamento sem comando','O CLP retira o comando de marcha do dosador. O painel continua alimentado.'],clp:['Descarga bloqueada','O sinal do sensor mudou. O CLP interrompe a sequência e retira o comando de marcha.'],ihm:['Alarme: descarga bloqueada','A IHM indica por que a dosagem parou e orienta a verificar a saída do dosador.']}
+normal:{painel:['Motor em marcha','O painel protege o circuito e aciona o motor da rosca sob comando do CLP.'],clp:['Sequência liberada','O sensor confirma a descarga livre e o CLP mantém a rosca em marcha.'],ihm:['Dosagem em andamento','A tela do operador mostra a etapa ativa e o estado da descarga.']},
+fault:{painel:['Motor parado','O CLP retira o comando de marcha. O motor da rosca para, mas o painel continua energizado.'],clp:['Descarga bloqueada','O sinal do sensor mudou. O CLP interrompe a sequência e retira o comando de marcha.'],ihm:['Alarme: descarga bloqueada','A IHM indica por que a dosagem parou e orienta a verificar a saída do dosador.']}
 };
 // Reserve the height of the longest caption at the current screen width.
 for(const [title,body] of Object.values(states).flatMap(group=>Object.values(group))){
