@@ -48,6 +48,31 @@ dialog{overscroll-behavior:contain}
   #piloto .section-title>p{margin-top:12px}
   #piloto .checks li{padding-block:7px}
 }
+
+/* Process simulation: independent drives and gravity gate. */
+.sim-state::after{content:"Parada em cascata"}
+.demo:not(.fault) .sim-state:before{background:#d6b16c}
+.demo[data-phase=dose] .sim-state:before{background:#9adcba}
+.flow,.belt-flow{animation-play-state:paused;opacity:.36}
+.drawing[data-motion=on][data-t1=on] .flow,.drawing[data-motion=on][data-t2=on] .belt-flow{animation-play-state:running;opacity:1}
+#gate-blade{transition:transform .24s;transform-box:fill-box;transform-origin:50% 50%}
+.drawing[data-gate=open] #gate-blade{transform:rotate(90deg);stroke:#e5b66c}
+.moega-grains{opacity:0;stroke-dasharray:2 7;animation:grain-drop .55s linear infinite;animation-play-state:paused}
+.drawing[data-gate=open] .moega-grains{opacity:1}
+.drawing[data-gate=open][data-motion=on] .moega-grains{animation-play-state:running}
+@keyframes grain-drop{to{stroke-dashoffset:-18}}
+.machine-line{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;padding:8px 12px;border-top:1px solid var(--line);text-align:center;color:var(--dim);font:650 .75rem/1.25 var(--mono);font-variant-numeric:tabular-nums}
+.machine-line span{min-width:0}
+.machine-line b{display:block;color:#e6e1dd}
+.demo-announcement{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.machine-line [data-on=true]{color:#a9dfc1}
+.machine-label{font:750 17px monospace;fill:#e0ddd7;stroke:none}
+.demo-actions{grid-template-columns:repeat(2,minmax(0,1fr))}
+#stop,#reset{grid-area:1/1;justify-self:stretch}
+#refill{grid-area:1/2}
+.demo.fault #stop{visibility:hidden}
+.demo-actions .ghost:disabled{color:var(--dim);opacity:.56;cursor:default;background:none}
+@media(max-width:480px){.demo-actions{padding-inline:12px}.demo-actions .button{padding:7px 5px;font-size:.78rem}.machine-line{padding-inline:6px;font-size:.67rem}}
 </style></head>
 <body>
 <svg width="0" height="0" style="position:absolute;pointer-events:none" aria-hidden="true" focusable="false"><defs>
@@ -62,18 +87,19 @@ dialog{overscroll-behavior:contain}
 <section class="shell hero" aria-labelledby="hero-title">
 <div class="lead"><div class="eyebrow">Para fabricantes de máquinas, indústria, agro e condomínios</div><h1 id="hero-title">Seu time externo de <strong>elétrica e automação.</strong></h1><p>Projetamos painéis, programamos CLP e IHM e acompanhamos a partida. Seguimos com sua equipe no suporte e nas próximas melhorias.</p></div>
 <section id="demo" class="demo" aria-label="Demonstração de um dosador">
-<div class="demo-top"><div class="meta"><strong>Dosador</strong> / Demo</div><div class="sim-state"><span id="status" aria-live="polite">Em operação</span></div></div>
-<div class="drawing" id="drawing" data-view="ihm">
+<div class="demo-top"><div class="meta"><strong>Dosador</strong> / Demo</div><div class="sim-state"><span id="status">Preparando partida</span></div><span class="demo-announcement" id="demo-announcement" role="status"></span></div>
+<div class="drawing" id="drawing" data-view="ihm" data-gate="closed" data-t1="off" data-t2="off">
 <svg viewBox="0 0 620 312" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-<defs><pattern id="grid" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M22 0H0V22" fill="none" stroke="#383e46" stroke-width=".7"/></pattern><linearGradient id="metal" x2="1" y2="1"><stop stop-color="#454c56"/><stop offset="1" stop-color="#22262c"/></linearGradient></defs>
+<defs><clipPath id="moega-interior"><path d="M222 69h158l-15 53-52 51h-25l-51-51z"/></clipPath><pattern id="grid" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M22 0H0V22" fill="none" stroke="#383e46" stroke-width=".7"/></pattern><linearGradient id="metal" x2="1" y2="1"><stop stop-color="#454c56"/><stop offset="1" stop-color="#22262c"/></linearGradient></defs>
 <path fill="url(#grid)" d="M0 0h620v312H0z"/>
 <g stroke="#7c848f" stroke-width="1.5" fill="none"><path d="M224 241v44m155-44v44M202 285h200M210 242h180M219 155v87m159-87v87" opacity=".55"/>
-<path d="M218 63h167l-17 61-53 52h-29l-52-52z" fill="url(#metal)"/><path d="M225 86h153M235 123h132M286 176v33h29v-33" fill="none"/>
+<path d="M218 63h167l-17 61-53 52h-29l-52-52z" fill="url(#metal)"/><rect id="moega-fill" x="218" y="84.75" width="170" height="89.25" fill="#b38145" opacity=".85" clip-path="url(#moega-interior)" stroke="none"/><path d="M225 86h153M235 123h132M286 176v33h29v-33" fill="none"/>
 <path d="M255 64v9m18-9v9m18-9v9m18-9v9m18-9v9m18-9v9m18-9v9" stroke="#b9bdc4" opacity=".5"/>
 <path d="M257 90l31 59h25l31-59" stroke="#5e646d" stroke-dasharray="3 6"/>
+<path class="moega-grains" d="M301 171v46" stroke="#f2be77" stroke-width="3" stroke-linecap="round"/><rect x="284" y="182" width="33" height="16" rx="2" fill="#23262c" fill-opacity=".7"/><path id="gate-blade" d="M291 190h19" stroke="#eeebe7" stroke-width="3" stroke-linecap="round"/>
 <rect x="267" y="207" width="130" height="32" rx="5" fill="#333942"/><path d="M281 222h104" class="flow" stroke="#e0dcd9" stroke-width="4" stroke-linecap="round"/>
 <rect x="232" y="211" width="36" height="24" rx="4" fill="#31363e"/><path d="M239 217v12m6-12v12m6-12v12m6-12v12" stroke="#969ca5"/>
-<path d="M384 238v29h102" stroke="#818993"/><path d="M396 251h93v20h-93z" fill="#333942"/><circle cx="406" cy="261" r="6"/><circle cx="480" cy="261" r="6"/><path class="belt-flow" d="M398 255h87" stroke="#f1eee9" stroke-width="2.5" stroke-linecap="round"/>
+<path d="M384 238v29h102" stroke="#818993"/><path d="M396 251h93v20h-93z" fill="#333942"/><circle cx="406" cy="261" r="6"/><circle cx="480" cy="261" r="6"/><path class="belt-flow" d="M398 255h87" stroke="#f1eee9" stroke-width="2.5" stroke-linecap="round"/><text class="machine-label" x="363" y="201">T1</text><text class="machine-label" x="457" y="244">T2</text>
 </g>
 <circle class="sensor" cx="370" cy="160" r="5" fill="#a9dfc1" stroke="#a9dfc1"/><path d="M370 160h56v-19" stroke="#888f99" stroke-dasharray="3 4" fill="none"/>
 <g class="zone z-painel" fill="none" stroke="#d8d9d9"><rect x="65" y="92" width="93" height="128" rx="4" fill="#23262c"/><path d="M77 105h69v101H77zM84 136h55m-55 32h55m-55 24h55"/><path d="M92 119v16m11-16v16m11-16v16m11-16v16M92 151v16m11-16v16m11-16v16m11-16v16"/><path d="M160 177h34v45h36" stroke-dasharray="4 4"/><text x="73" y="78" fill="#f4f1ee" stroke="none" font-family="monospace" font-size="12">PAINEL</text></g>
@@ -81,9 +107,10 @@ dialog{overscroll-behavior:contain}
 <g class="zone z-ihm" fill="none" stroke="#d8d9d9"><rect x="448" y="79" width="103" height="66" rx="5" fill="#23262c"/><rect class="ihm-screen" x="457" y="88" width="85" height="44" rx="2"/><path class="ihm-trace" d="M465 115h13l9-12 8 16 10-11 8 4h19"/><path class="ihm-scan" d="M465 97v26" stroke="#f6f3ef" stroke-width="2"/><text class="ihm-alarm" x="500" y="115" text-anchor="middle" font-family="monospace" font-size="14" font-weight="bold" fill="#fff5f5" stroke="none">ALARME</text><path d="M487 138h24"/><text x="448" y="65" fill="#f4f1ee" stroke="none" font-family="monospace" font-size="12">IHM</text></g>
 </svg>
 </div>
+<div class="machine-line" aria-label="Estado da máquina"><span>T1 <b id="t1-status">OFF</b></span><span>T2 <b id="t2-status">OFF</b></span><span>Válvula <b id="gate-status">fechada</b></span><span>Moega <b id="level-status">85%</b></span></div>
 <div class="tabs" role="tablist" aria-label="Camadas da máquina"><button type="button" role="tab" id="tab-painel" aria-controls="leitura" aria-selected="false" tabindex="-1" data-view="painel">Painel</button><button type="button" role="tab" id="tab-clp" aria-controls="leitura" aria-selected="false" tabindex="-1" data-view="clp">CLP</button><button type="button" role="tab" id="tab-ihm" aria-controls="leitura" aria-selected="true" data-view="ihm">IHM</button></div>
 <div id="leitura" class="readout" role="tabpanel" aria-labelledby="tab-ihm" tabindex="0"><div class="readout-content"><h3 id="read-title">Dosagem em andamento</h3><p id="read-body">A tela do operador mostra a etapa ativa e o estado da descarga.</p></div></div>
-<div class="demo-actions"><button type="button" class="button primary" id="stop">Simular parada</button><button type="button" class="reset" id="reset" disabled>Voltar ao normal</button></div>
+<div class="demo-actions"><button type="button" class="button primary" id="stop">Simular parada</button><button type="button" class="button ghost reset" id="reset" disabled>Voltar ao normal</button><button type="button" class="button ghost" id="refill" disabled>Abastecer a moega</button></div>
 </section>
 </section>
 <div class="strip"><div class="shell"><span>Projeto e painéis</span><span>Programação CLP / IHM</span><span>Testes e comissionamento</span></div></div>
@@ -133,8 +160,8 @@ else window.addEventListener('resize',syncBarHeight);
 const $=(id)=>document.getElementById(id);
 const tabs=[...document.querySelectorAll('.tabs button')];
 const states={
-normal:{painel:['Motor em marcha','O painel protege o circuito e aciona o motor da rosca sob comando do CLP.'],clp:['Sequência liberada','O sensor confirma a descarga livre e o CLP mantém a rosca em marcha.'],ihm:['Dosagem em andamento','A tela do operador mostra a etapa ativa e o estado da descarga.']},
-fault:{painel:['Motor parado','O CLP retira o comando de marcha. O motor da rosca para, mas o painel continua energizado.'],clp:['Descarga bloqueada','O sinal do sensor mudou. O CLP interrompe a sequência e retira o comando de marcha.'],ihm:['Alarme: descarga bloqueada','A IHM indica por que a dosagem parou e orienta a verificar a saída do dosador.']}
+normal:{painel:['Motores em marcha','O painel protege os circuitos e aciona a rosca e o transportador de saída sob comando do CLP.'],clp:['Sequência liberada','O sensor confirma a descarga livre. Com os dois transportadores em marcha, o CLP abre a válvula.'],ihm:['Dosagem em andamento','A tela do operador mostra a etapa ativa e o estado da descarga.']},
+fault:{painel:['Motores parados','O CLP retira os comandos de marcha. Os transportadores param, mas o painel continua energizado.'],clp:['Descarga bloqueada','O sinal do sensor mudou. O CLP interrompe a sequência e retira o comando de marcha.'],ihm:['Alarme: descarga bloqueada','A IHM indica por que a dosagem parou e orienta a verificar a saída do dosador.']}
 };
 // Reserve the height of the longest caption at the current screen width.
 for(const [title,body] of Object.values(states).flatMap(group=>Object.values(group))){
@@ -146,7 +173,73 @@ for(const [title,body] of Object.values(states).flatMap(group=>Object.values(gro
   size.append(heading,copy);
   $('leitura').append(size);
 }
-let fault=false,view='ihm';
+const phaseText={
+  idle:['Preparando a partida','A válvula está fechada. O CLP libera primeiro o transportador de saída (T2).'],
+  start:['Partida em cascata','O transportador de saída (T2) parte antes da rosca (T1). A válvula só abre com os dois em marcha.'],
+  drain:['Parada em cascata','A válvula fecha; a rosca (T1) esvazia, para, e só depois para o transportador de saída (T2).'],
+  low:['Nível baixo','A válvula e os transportadores estão parados. Use “Abastecer a moega” para iniciar outro ciclo.'],
+  fill:['Abastecendo a moega','O nível sobe com a válvula de descarga fechada. A partida começa após o abastecimento.']
+};
+for(const [title,body] of Object.values(phaseText)){
+  const size=document.createElement('div'), heading=document.createElement('h3'), copy=document.createElement('p');
+  size.className='readout-size'; size.setAttribute('aria-hidden','true'); heading.textContent=title; copy.textContent=body;
+  size.append(heading,copy); $('leitura').append(size);
+}
+const fullLevel=85, lowLevel=20, idleMs=700, stepMs=1400, dosingMs=8000, refillMs=2500;
+const cycle=[
+  {key:'idle', ms:idleMs, t1:false,t2:false,gate:false,label:'Preparando partida'},
+  {key:'start',ms:stepMs,t1:false,t2:true, gate:false,label:'Partida em cascata'},
+  {key:'start',ms:stepMs,t1:true, t2:true, gate:false,label:'Partida em cascata'},
+  {key:'dose', ms:dosingMs,t1:true,t2:true,gate:true,label:'Em dosagem'},
+  {key:'drain',ms:stepMs,t1:true, t2:true,gate:false,label:'Parada em cascata'},
+  {key:'drain',ms:stepMs,t1:false,t2:true, gate:false,label:'Parada em cascata'},
+  {key:'low',ms:0,t1:false,t2:false,gate:false,label:'Nível baixo'}
+];
+const cycleMs=cycle.reduce((sum,stage)=>sum+stage.ms,0);
+const fillStage={key:'fill',t1:false,t2:false,gate:false,label:'Abastecendo'};
+const faultStage={key:'fault',t1:false,t2:false,gate:false,label:'Parado por alarme'};
+let view='ihm',fault=false,elapsed=0,level=fullLevel,startLevel=fullLevel,filling=false,fillElapsed=0,fillFrom=lowLevel,pausedFill=false;
+let stage=cycle[0],processTimer,lastTick;
+function stageAt(ms,initial){
+  for(const s of cycle){
+    if(!s.ms||ms<s.ms){
+      const value=s.key==='dose'?initial-(initial-lowLevel)*ms/s.ms:s.key==='drain'||s.key==='low'?lowLevel:initial;
+      return [s,value];
+    }
+    ms-=s.ms;
+  }
+}
+function processTick(now){
+  const dt=Math.min(300,Math.max(0,now-lastTick)); lastTick=now;
+  let next;
+  if(filling){
+    fillElapsed=Math.min(refillMs,fillElapsed+dt);
+    level=fillFrom+(fullLevel-fillFrom)*fillElapsed/refillMs;
+    next=fillStage;
+    if(fillElapsed>=refillMs){filling=false;startLevel=fullLevel;elapsed=0;next=cycle[0]}
+  }else{
+    elapsed=Math.min(cycleMs,elapsed+dt);
+    [next,level]=stageAt(elapsed,startLevel);
+  }
+  if(stage!==next){stage=next;render()}else{renderLevel()}
+  if(stage.key==='low'){$('demo-announcement').textContent='Nível baixo. Abastecer a moega está disponível.';planProcess()}
+}
+function planProcess(){
+  clearInterval(processTimer);
+  $('drawing').dataset.motion=visible&&!document.hidden?'on':'off';
+  if(fault||!visible||document.hidden||stage.key==='low')return;
+  lastTick=performance.now();
+  processTimer=setInterval(()=>processTick(performance.now()),90);
+}
+function renderLevel(){
+  const percent=Math.round(reduced.matches?level/5:level)*(reduced.matches?5:1);
+  const marker=String(percent)+'%';
+  if($('level-status').textContent===marker)return;
+  $('level-status').textContent=marker;
+  const height=105*percent/100;
+  $('moega-fill').setAttribute('y',String(174-height));
+  $('moega-fill').setAttribute('height',String(height));
+}
 const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
 const demo=$('demo');
 let rotate=!reduced.matches, visible=!('IntersectionObserver' in window), autoTimer;
@@ -169,17 +262,51 @@ if('IntersectionObserver' in window){
   new IntersectionObserver(([entry])=>{
     visible=entry.isIntersecting&&entry.intersectionRatio>=0.25;
     planRotation();
+    planProcess();
   },{threshold:[0,.25]}).observe(demo);
 }
-document.addEventListener('visibilitychange',planRotation);
-reduced.addEventListener('change',e=>{if(e.matches)setRotation(false)});
+document.addEventListener('visibilitychange',()=>{planRotation();planProcess()});
+reduced.addEventListener('change',e=>{if(e.matches)setRotation(false);renderLevel()});
 setRotation(rotate);
 $('leitura').addEventListener('focusin',()=>setRotation(false));
 for(const tab of tabs)tab.addEventListener('focus',()=>setRotation(false));
-function render(){const state=fault?'fault':'normal';$('demo').classList.toggle('fault',fault);$('drawing').dataset.view=view;const label=fault?'Parado por alarme':'Em operação';if($('status').textContent!==label)$('status').textContent=label;$('stop').disabled=fault;$('reset').disabled=!fault;const [title,body]=states[state][view];$('read-title').textContent=title;$('read-body').textContent=body;$('leitura').setAttribute('aria-labelledby','tab-'+view);tabs.forEach(t=>{const active=t.dataset.view===view;t.setAttribute('aria-selected',String(active));t.tabIndex=active?0:-1})}
+function render(){
+  const drawing=$('drawing'), s=fault?faultStage:stage;
+  demo.classList.toggle('fault',fault);demo.dataset.phase=s.key;
+  drawing.dataset.view=view;drawing.dataset.t1=s.t1?'on':'off';drawing.dataset.t2=s.t2?'on':'off';drawing.dataset.gate=s.gate?'open':'closed';
+  $('status').textContent=s.label;
+  for(const [id,on] of [['t1-status',s.t1],['t2-status',s.t2]]){
+    $(id).textContent=on?'ON':'OFF';$(id).dataset.on=String(on);
+  }
+  $('gate-status').textContent=s.gate?'aberta':'fechada';$('gate-status').dataset.on=String(s.gate);
+  $('stop').disabled=fault||s.key==='low';$('reset').disabled=!fault;$('refill').disabled=fault||s.key!=='low';
+  const [title,body]=fault?states.fault[view]:(phaseText[s.key]??states.normal[view]);
+  $('read-title').textContent=title;$('read-body').textContent=body;$('leitura').setAttribute('aria-labelledby','tab-'+view);
+  tabs.forEach(t=>{const active=t.dataset.view===view;t.setAttribute('aria-selected',String(active));t.tabIndex=active?0:-1});
+  renderLevel();
+}
 tabs.forEach((tab,i)=>{tab.addEventListener('click',()=>{setRotation(false);view=tab.dataset.view;render()});tab.addEventListener('keydown',e=>{let n;if(e.key==='ArrowRight')n=(i+1)%3;else if(e.key==='ArrowLeft')n=(i+2)%3;else if(e.key==='Home')n=0;else if(e.key==='End')n=2;else return;e.preventDefault();tabs[n].click();tabs[n].focus()})});
-$('stop').addEventListener('click',()=>{fault=true;setRotation(false);view='ihm';render();$('reset').focus({preventScroll:true})});
-$('reset').addEventListener('click',()=>{fault=false;render();$('stop').focus({preventScroll:true})});
+$('stop').addEventListener('click',()=>{
+  if(fault||stage.key==='low')return;
+  pausedFill=filling;filling=false;fault=true;setRotation(false);view='ihm';planProcess();render();
+  $('demo-announcement').textContent='Parado por alarme. Descarga bloqueada.';
+  $('reset').focus({preventScroll:true});
+});
+$('reset').addEventListener('click',()=>{
+  if(!fault)return;
+  fault=false;
+  if(pausedFill&&level<fullLevel){fillFrom=level;fillElapsed=0;filling=true;stage=fillStage}
+  else if(level<=lowLevel){elapsed=cycleMs;stage=cycle[cycle.length-1]}
+  else{startLevel=level;elapsed=0;stage=cycle[0]}
+  pausedFill=false;$('demo-announcement').textContent='Alarme simulado removido.';render();planProcess();$(stage.key==='low'?'refill':'stop').focus({preventScroll:true});
+});
+$('refill').addEventListener('click',()=>{
+  if(fault||stage.key!=='low')return;
+  fillFrom=level;fillElapsed=0;filling=true;stage=fillStage;$('demo-announcement').textContent='Abastecendo a moega.';render();planProcess();
+  $('stop').focus({preventScroll:true});
+});
+render();
+planProcess();
 const dlg=$('brief-dialog');
 $('open-brief').addEventListener('click',()=>dlg.showModal());$('close-brief').addEventListener('click',()=>dlg.close());
 </script></body></html>
